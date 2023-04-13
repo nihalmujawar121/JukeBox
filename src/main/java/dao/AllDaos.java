@@ -17,9 +17,11 @@ public class AllDaos extends Connectors {
     Scanner sc = new Scanner(System.in);
 
 
-    public List<Songs> getResultSet() {
+    public ArrayList<Songs> getResultSet()
+    {
         Connection con = getConnection();
-        List<Songs> list = new ArrayList<>();
+        ArrayList<Songs> list = new ArrayList<>();
+
 
         System.out.println("------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-7s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n", "SONG ID",  "SONG NAME", "DURATION", "ARTIST NAME", "ALBUM NAME", "GENRE");
@@ -53,7 +55,7 @@ public class AllDaos extends Connectors {
         Connection con = getConnection();
         List<PlayList> list = new ArrayList<>();
                 System.out.println("------------------------------------------------------------------------------------------------");
-                System.out.printf ("%-5s\t%-25s\t%-15s\n", "PLAYLIST ID", "PLAYLIST NAME", "CREATION DATE");
+                System.out.printf ("%-5s\t%-25s\t%-15s\n", "PLAYLIST ID", "PLAYLIST NAME");
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("Select * from PlayList");
@@ -61,10 +63,10 @@ public class AllDaos extends Connectors {
                 PlayList s = new PlayList();
                 s.setPlaylistId(rs.getInt(1));
                 s.setPlaylistName(rs.getString(2));
-                s.setCreationDate(rs.getString(3));
+
 
                 list.add(s);
-                System.out.printf ("%-5s\t%-25s\t%-15s\n", rs.getInt(1),rs.getString(2),rs.getString(3));
+                System.out.printf ("%-5s\t%-25s\t%-15s\n", rs.getInt(1),rs.getString(2));
                 System.out.println("-------------------------------------------------------------------------------------------------");
 
             }
@@ -98,6 +100,28 @@ public class AllDaos extends Connectors {
         }
         return list;
     }
+//    public List<PlayList> getAllDetails() throws SQLException
+//    {
+//        Connection con=getConnection();
+//        List<PlayList>list = new ArrayList<>();
+//        String sql = "SELECT * FROM PlayList";
+//        //Statement object is used to execute SQL statement
+//        Statement stmt = con.createStatement();
+//
+//        //ResultSet returns a table representing database.
+//        ResultSet rs = stmt.executeQuery(sql);
+//
+//        while (rs.next()){
+//            int playlistId = rs.getInt(1);
+//            String playlist_Name = rs.getString(2);
+//
+//            //Now Playlist object is calling the Parameterized Constructor and storing the values in the list
+//            PlayList plays = new PlayList(playlistId,playlist_Name);
+//            list.add(plays);
+//        }
+//        return list;
+
+   // }
 
 //    public int insertValues()
 //    {

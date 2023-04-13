@@ -16,11 +16,11 @@ public class SearchByColumn extends Connectors
 {
 
 
-    public List<Songs> searchByArtist(String Song)
+    public ArrayList<Songs> searchByArtist(String Song)
     {
 
         Connection con =  getConnection();
-        List<Songs> list = new ArrayList<>();
+        ArrayList<Songs> list = new ArrayList<>();
         MusicPlayerSystem m=new MusicPlayerSystem();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
@@ -48,10 +48,10 @@ public class SearchByColumn extends Connectors
         return list;
     }
 
-    public List<Songs> searchBySong(String Song)
+    public  ArrayList<Songs> searchBySong(String Song)
     {
         Connection con =  getConnection();
-        List<Songs> list = new ArrayList<>();
+        ArrayList<Songs> list = new ArrayList<>();
         MusicPlayerSystem m=new MusicPlayerSystem();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
@@ -77,10 +77,10 @@ public class SearchByColumn extends Connectors
         return list;
     }
 
-    public List<Songs> searchByGenre(String Song)
+    public ArrayList<Songs> searchByGenre(String Song)
     {
         Connection con =  getConnection();
-        List<Songs> list = new ArrayList<>();
+        ArrayList<Songs> list = new ArrayList<>();
         MusicPlayerSystem m=new MusicPlayerSystem();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
@@ -108,11 +108,11 @@ public class SearchByColumn extends Connectors
     }
 
 
-    public List<Songs> playById(int Song)
+    public ArrayList<Songs> playById(int Song)
     {
 
         Connection con =  getConnection();
-        List<Songs> list = new ArrayList<>();
+        ArrayList<Songs> list = new ArrayList<>();
         MusicPlayerSystem m=new MusicPlayerSystem();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
@@ -140,32 +140,5 @@ public class SearchByColumn extends Connectors
         m.PlaySong(list);
         return list;
     }
-
-//    public List<Songs> genre()
-//    {
-//
-//        Connection con =  getConnection();
-//        List<Songs> list = new ArrayList<>();
-//
-//        Songs s = null;
-//        try
-//        {
-//            Statement statement = con.createStatement();
-//            ResultSet rs = statement.executeQuery("SELECT genre FROM Songs");
-//            s.setGenre(rs.getString(6));
-//            list.add(s);
-//            System.out.println(s);
-//        }
-//        catch (Exception e)
-//        {
-//            System.out.println(e);
-//        }
-//        return list;
-//    }
-//
-//    public static void main(String[] args) {
-//        SearchByColumn sa=new SearchByColumn();
-//        sa.genre();
-//    }
 
 }

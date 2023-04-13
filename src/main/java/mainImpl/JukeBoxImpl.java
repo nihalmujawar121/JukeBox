@@ -2,13 +2,12 @@ package mainImpl;
 
 import bean.Songs;
 import dao.AllDaos;
-import dao.CreatePlayList;
+import dao.CreatePlayLists;
 import dao.MusicPlayerSystem;
 import serching.SearchByColumn;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 public class JukeBoxImpl
@@ -20,9 +19,9 @@ public class JukeBoxImpl
 
         AllDaos dao = new AllDaos();
         MusicPlayerSystem music = new MusicPlayerSystem();
-        CreatePlayList create=new CreatePlayList();
+        CreatePlayLists create=new CreatePlayLists();
 
-        List<Songs> song = new ArrayList<>();
+        ArrayList<Songs> song = new ArrayList<>();
 
 
         SearchByColumn search= new SearchByColumn();
@@ -36,7 +35,7 @@ public class JukeBoxImpl
         int choice;
         try {
              do {
-                System.out.println("1.Display Playlist & Play Songs\n" +
+                 System.out.println("1.Display Playlist & Play Songs\n" +
                         "2.Create PlayList\n" +
                         "3.Search Songs\n" +
                         "4.Exit");
@@ -44,20 +43,32 @@ public class JukeBoxImpl
                 switch (option)
                 {
                     case 1:
-                        song=dao.getResultSet();
+                        song = dao.getResultSet();
                         System.out.println("Enter Song Id Which You Want to Play");
                         int id=sc.nextInt();
                         search.playById(id);
 
                         music.PlaySong(song);
+
                         break;
 
                     case 2:
-                        System.out.println("Enter Song ID");
-                        int songId = sc.nextInt();
-                        System.out.println("Enter play list Id");
-                        int playlistId = sc2.nextInt();
-                        create.createPlayList(songId,playlistId);
+                        int songId;
+                        System.out.println("Enter Playlist Names :");
+                        String playlistName = sc2.nextLine();
+
+//                        System.out.println("Enter Playlist Id");
+//                        int playlistId = sc.nextInt();
+                        System.out.println("your playlist is successfully created");
+                        do {
+                            System.out.println("enter songId or press 0 to exit" );
+                             songId=sc.nextInt();
+                            boolean insert=create.createPList(playlistName,songId);
+                            if(!insert)
+                            {
+                                System.out.println("Song Id Inserted");
+                            }
+                        } while(songId>0);
                                 break;
 
                     case 3:
@@ -71,12 +82,12 @@ public class JukeBoxImpl
                                         System.out.println("-----------Genre List-----------");
                                         System.out.println("Action Song\n" +
                                                 "Fun Song\n" +
-                                                "Sad Song\n" +
                                                 "Romance\n" +
                                                 "Life Song\n" +
-                                                "Rap Song");
+                                                "Rap Song\n" +
+                                                "Pop Song");
 
-                                        System.out.println("Enter Genre Name");
+                                        System.out.println("------Enter Genre Name------");
                                         String genre = sc1.nextLine();
                                         search.searchByGenre(genre);
                                         break;
@@ -87,12 +98,12 @@ public class JukeBoxImpl
                                         System.out.println("Justin_Beiber\n" +
                                                 "Atif Aslam\n" +
                                                 "Mohammed Irfan\n" +
-                                                "MC Stan\n" +
+                                                "MC_Stan\n" +
                                                 "Amit Mishra\n" +
                                                 "Meet Bros\n" +
-                                                " Arijit Singh\n");
+                                                "Arijit Singh\n");
 
-                                        System.out.println("Enter Artist Name");
+                                        System.out.println("------Enter Artist Name------");
                                         String artist = sc1.nextLine();
                                         search.searchByArtist(artist);
                                         break;
@@ -105,14 +116,14 @@ public class JukeBoxImpl
                                                 "Ek Din Pyar\n" +
                                                 "Immortals\n" +
                                                 "Let Me Love\n" +
-                                                " Banjaraa-Ek Villain\n" +
+                                                "Banjaraa-Ek Villain\n" +
                                                 "Galti Se Mistake\n" +
                                                 "Girl I Need You\n" +
                                                 "One Life Baby\n" +
                                                 "Tu Chale\n" +
                                                 "Hossana");
 
-                                        System.out.println("Enter Song Name");
+                                        System.out.println("------Enter Song Name-------");
                                         String songNames = sc1.nextLine();
                                         search.searchBySong(songNames);
                                         break;
@@ -128,7 +139,7 @@ public class JukeBoxImpl
                     default:
                         System.out.println("Wrong entered Please enter 1 to 4");
                 }
-                System.out.println("Play Song 1, Exit press 0");
+                System.out.println("Main Menu 1, Exit press 0");
                 choice = sc.nextInt();
             }
             while (choice == 1);

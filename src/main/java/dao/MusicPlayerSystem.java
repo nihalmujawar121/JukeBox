@@ -20,7 +20,7 @@ public class MusicPlayerSystem extends Connectors {
 
 
 
-    public Clip PlaySong(List<Songs> al)
+    public Clip PlaySong(ArrayList<Songs> al)
     {
         Iterator<Songs> iterator= al.iterator();
         while (iterator.hasNext())
