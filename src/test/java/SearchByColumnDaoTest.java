@@ -1,5 +1,5 @@
 import bean.Song;
-import dao.SearchByColumn;
+import dao.SearchByColumnDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,29 +10,29 @@ import static org.junit.Assert.assertNotEquals;
 import java.util.ArrayList;
 
 
-public class SearchByColumnTest
+public class SearchByColumnDaoTest
 {
-    SearchByColumn searchByColumn;
+    SearchByColumnDao searchByColumnDao;
     @Before
     public void setUp(){
-        searchByColumn = new SearchByColumn();
+        searchByColumnDao = new SearchByColumnDao();
     }
 
     @After
     public void tearDown(){
-        searchByColumn = null;
+        searchByColumnDao = null;
     }
 
     @Test
 public void Searchsong()
     {
-    ArrayList<Song> list = searchByColumn.searchBySong("NATU");
+    ArrayList<Song> list = searchByColumnDao.searchBySong("NATU");
     assertNotEquals(1,list.size());
 }
        @Test
         public void SearchGenre()
        {
-           ArrayList<Song> list1=searchByColumn.searchByGenre("GENRE");
+           ArrayList<Song> list1= searchByColumnDao.searchByGenre("GENRE");
            assertNotEquals(2,(list1.size()));
        }
 }

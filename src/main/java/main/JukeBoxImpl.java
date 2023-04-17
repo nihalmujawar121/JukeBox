@@ -2,9 +2,9 @@ package main;
 
 import bean.Song;
 import dao.AllDaos;
-import dao.CreatePlayLists;
-import dao.MusicPlayerSystem;
-import dao.SearchByColumn;
+import dao.CreatePlayListDao;
+import dao.MusicPlayerSystemDao;
+import dao.SearchByColumnDao;
 
 import java.util.ArrayList;
 
@@ -19,13 +19,13 @@ public class JukeBoxImpl
         Scanner scanner2 = new Scanner(System.in);
 
         AllDaos dao = new AllDaos();
-        MusicPlayerSystem music = new MusicPlayerSystem();
-        CreatePlayLists create=new CreatePlayLists();
+        MusicPlayerSystemDao music = new MusicPlayerSystemDao();
+        CreatePlayListDao create=new CreatePlayListDao();
 
         ArrayList<Song> song;
 
 
-        SearchByColumn search= new SearchByColumn();
+        SearchByColumnDao search= new SearchByColumnDao();
 
         System.out.println("---------------------------------------------------------------------------------------------------------");
         System.out.println("*+++++++++++++***************************PRESENTED-BY-NIHAL+++++++++++++++*******************************!");

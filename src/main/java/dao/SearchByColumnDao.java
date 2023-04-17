@@ -8,14 +8,14 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class SearchByColumn extends Connectors
+public class SearchByColumnDao extends Connectors
 {
     public void searchByArtist(String Song)
     {
 
         Connection connection =  getConnection();
         ArrayList<bean.Song> list = new ArrayList<>();
-        MusicPlayerSystem music = new MusicPlayerSystem();
+        MusicPlayerSystemDao music = new MusicPlayerSystemDao();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
         System.out.println("-------------------------------------------------------------------------------------------------------------");
@@ -45,7 +45,7 @@ public class SearchByColumn extends Connectors
     {
         Connection connection =  getConnection();
         ArrayList<bean.Song> list = new ArrayList<>();
-        MusicPlayerSystem music=new MusicPlayerSystem();
+        MusicPlayerSystemDao music=new MusicPlayerSystemDao();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
         System.out.println("-------------------------------------------------------------------------------------------------------------");
@@ -74,7 +74,7 @@ public class SearchByColumn extends Connectors
     {
         Connection connection =  getConnection();
         ArrayList<bean.Song> list = new ArrayList<>();
-        MusicPlayerSystem music=new MusicPlayerSystem();
+        MusicPlayerSystemDao music=new MusicPlayerSystemDao();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
         System.out.println("-------------------------------------------------------------------------------------------------------------");
@@ -107,7 +107,7 @@ public class SearchByColumn extends Connectors
 
         Connection connection =  getConnection();
         ArrayList<bean.Song> list = new ArrayList<>();
-        MusicPlayerSystem music=new MusicPlayerSystem();
+        MusicPlayerSystemDao music=new MusicPlayerSystemDao();
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.printf ("%-10s\t%-25s\t%-15s\t%-20s\t%7s\t%14s\n","SONG ID","SONG NAME","DURATION","ARTIST NAME","ALBUM NAME","GENRE");
         System.out.println("-------------------------------------------------------------------------------------------------------------");

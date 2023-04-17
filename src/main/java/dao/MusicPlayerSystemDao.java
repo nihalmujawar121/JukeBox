@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import java.util.*;
 
-public class MusicPlayerSystem extends Connectors
+public class MusicPlayerSystemDao extends Connectors
 {
     Scanner scanner = new Scanner(System.in);
     public void PlaySong(ArrayList<Song> list)

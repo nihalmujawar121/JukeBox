@@ -8,7 +8,7 @@ import java.sql.*;
 
 
 
-public class CreatePlayLists extends Connectors
+public class CreatePlayListDao extends Connectors
 
 
 {
