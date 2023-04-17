@@ -1,21 +1,19 @@
 package bean;
 
+import java.util.Objects;
+
 public class SongsList
 {
     private int listId;
 
-    private int songId;
+    private int id;
     private int playListId;
     public SongsList()
     {
 
     }
 
-    public SongsList(int listId, int songId, int playListId) {
-        this.listId = listId;
-        this.songId = songId;
-        this.playListId = playListId;
-    }
+
 
     public int getListId() {
         return listId;
@@ -25,12 +23,12 @@ public class SongsList
         this.listId = listId;
     }
 
-    public int getSongId() {
-        return songId;
+    public int getId() {
+        return id;
     }
 
-    public void setSongId(int songId) {
-        this.songId = songId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getPlayListId() {
@@ -45,8 +43,22 @@ public class SongsList
     public String toString() {
         return "SongsList{" +
                 "listId=" + listId +
-                ", songId=" + songId +
+                ", songId=" + id +
                 ", playListId=" + playListId +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SongsList songsList = (SongsList) o;
+        return listId == songsList.listId && id == songsList.id && playListId == songsList.playListId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(listId, id, playListId);
+    }
+        
 }

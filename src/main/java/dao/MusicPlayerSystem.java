@@ -1,35 +1,25 @@
 package dao;
 
-import bean.Songs;
-import dbconnection.Connectors;
+import bean.Song;
+import util.Connectors;
 
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
+
+
 import java.util.*;
 
-public class MusicPlayerSystem extends Connectors {
-
-    Scanner sc = new Scanner(System.in);
-
-
-
-
-    public Clip PlaySong(ArrayList<Songs> al)
+public class MusicPlayerSystem extends Connectors
+{
+    Scanner scanner = new Scanner(System.in);
+    public void PlaySong(ArrayList<Song> list)
     {
-        Iterator<Songs> iterator= al.iterator();
-        while (iterator.hasNext())
-        {
+        for (Song song : list) {
             String response = " ";
-            //if (response.equals("Q") || response.equals("q")) break;
-            String url=iterator.next().getUrl();
-            try
-            {
+
+            String url = song.getUrl();
+            try {
                 File path = new File(url);
                 if (path.exists()) {
 
@@ -37,14 +27,12 @@ public class MusicPlayerSystem extends Connectors {
                     Clip clip = AudioSystem.getClip();
                     clip.open(audioStream);
 
-                    while (!response.equals("Q"))
-                    {
+                    while (!response.equals("Q")) {
                         System.out.println("P = play, S = Stop, R = Reset, N = Next, Q = Quit ");
                         System.out.print("Enter your choice: ");
-                        response = sc.next();
+                        response = scanner.next();
                         response = response.toUpperCase();
-                        switch (response)
-                        {
+                        switch (response) {
 
                             case ("P"):
                                 clip.start();
@@ -71,29 +59,20 @@ public class MusicPlayerSystem extends Connectors {
                                 System.out.println("Not a valid response");
 
 
-
                         }
-                        if (response.equals("Q") || response.equals("q")|| response.equals("N") || response.equals("n")) break;
+                        if (response.equals("Q") || response.equals("q") || response.equals("N") || response.equals("n"))
+                            break;
 
                     }
                     if (response.equals("Q") || response.equals("q"))
                         break;
 
                 }
-            }
-            catch (UnsupportedAudioFileException e)
-            {
-                System.out.println(e);
-            } catch (LineUnavailableException e)
-            {
-                System.out.println(e);
-            } catch (IOException i)
-            {
-                System.out.println(i);
+            } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                e.printStackTrace();
             }
         }
 
-        return null;
     }
 
     }

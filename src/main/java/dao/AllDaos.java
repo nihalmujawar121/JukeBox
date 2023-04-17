@@ -1,26 +1,24 @@
 package dao;
 
-import bean.PlayList;
-import bean.Songs;
-import bean.SongsList;
-import dbconnection.Connectors;
+
+import bean.Song;
+import util.Connectors;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class AllDaos extends Connectors {
-    Scanner sc = new Scanner(System.in);
 
 
-    public ArrayList<Songs> getResultSet()
+
+    public ArrayList<Song> getResultSet()
     {
         Connection con = getConnection();
-        ArrayList<Songs> list = new ArrayList<>();
+        ArrayList<Song> list = new ArrayList<>();
 
 
         System.out.println("------------------------------------------------------------------------------------------------------------");
@@ -30,7 +28,7 @@ public class AllDaos extends Connectors {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("Select * from Songs");
             while (rs.next()) {
-                Songs s = new Songs();
+                Song s = new Song();
 
                 s.setSongId(rs.getInt(1));
                 s.setSongName(rs.getString(2));
@@ -45,133 +43,62 @@ public class AllDaos extends Connectors {
                 System.out.println("------------------------------------------------------------------------------------------------------------");
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         return list;
     }
 
-    public List<PlayList> getResultSet1() {
-        Connection con = getConnection();
-        List<PlayList> list = new ArrayList<>();
-                System.out.println("------------------------------------------------------------------------------------------------");
-                System.out.printf ("%-5s\t%-25s\t%-15s\n", "PLAYLIST ID", "PLAYLIST NAME");
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from PlayList");
-            while (rs.next()) {
-                PlayList s = new PlayList();
-                s.setPlaylistId(rs.getInt(1));
-                s.setPlaylistName(rs.getString(2));
-
-
-                list.add(s);
-                System.out.printf ("%-5s\t%-25s\t%-15s\n", rs.getInt(1),rs.getString(2));
-                System.out.println("-------------------------------------------------------------------------------------------------");
-
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return list;
-    }
-
-    public List<SongsList> getResultSet2() {
-        Connection con = getConnection();
-        List<SongsList> list = new ArrayList<>();
-        System.out.println("------------------------------------------------------------------------------------------------");
-        System.out.printf ("%-5s\t%-25s\t%-15s\n", "LIST ID", "SONG ID", "PLAYLIST ID");
-        try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from SongsList");
-            while (rs.next()) {
-                SongsList s = new SongsList();
-                s.setListId(rs.getInt(1));
-                s.setSongId(rs.getInt(2));
-                s.setPlayListId(rs.getInt(3));
-
-                list.add(s);
-                System.out.printf ("%-5s\t%-25s\t%-15s\n", rs.getInt(1),rs.getInt(2),rs.getInt(3));
-                System.out.println("----------------------------------------------------------------------------------------------");
-
-            }
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return list;
-    }
-//    public List<PlayList> getAllDetails() throws SQLException
+//    public List<PlayList> getResultSet1()
 //    {
-//        Connection con=getConnection();
-//        List<PlayList>list = new ArrayList<>();
-//        String sql = "SELECT * FROM PlayList";
-//        //Statement object is used to execute SQL statement
-//        Statement stmt = con.createStatement();
+//        Connection con = getConnection();
+//        List<PlayList> list = new ArrayList<>();
+//                System.out.println("------------------------------------------------------------------------------------------------");
+//                System.out.printf ("%-5s\t%-25s\t%-15s\n", "PLAYLIST ID", "PLAYLIST NAME");
+//        try {
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery("Select * from PlayList");
+//            while (rs.next()) {
+//                PlayList s = new PlayList();
+//                s.setPlaylistId(rs.getInt(1));
+//                s.setPlaylistName(rs.getString(2));
 //
-//        //ResultSet returns a table representing database.
-//        ResultSet rs = stmt.executeQuery(sql);
 //
-//        while (rs.next()){
-//            int playlistId = rs.getInt(1);
-//            String playlist_Name = rs.getString(2);
+//                list.add(s);
 //
-//            //Now Playlist object is calling the Parameterized Constructor and storing the values in the list
-//            PlayList plays = new PlayList(playlistId,playlist_Name);
-//            list.add(plays);
+//                System.out.printf ("%-5s\t%-25s\t%-15s\n", rs.getInt(1),rs.getString(2));
+//                System.out.println("-------------------------------------------------------------------------------------------------");
+//
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
 //        }
 //        return list;
-
-   // }
-
-//    public int insertValues()
-//    {
-//
-//        int res=0;
-//        Connection con=getConnection();
-//        try
-//        {
-//            Statement st= con.createStatement();
-//
-//            res=st.executeUpdate("Insert into Songs Values(12,'Hossana','00:05:31','A R Rehman','Ek Deewana Tha','Romance','src/main/resources/Hossana.wav');");
-//        }
-//        catch (SQLException e)
-//        {
-//            System.out.println(e);
-//        }
-//        return res;
 //    }
-
-//    public void deleteStudentData()
-//    {
+//
+//    public List<SongsList> getResultSet2() {
 //        Connection con = getConnection();
-//        try
-//        {
-//            Statement s= con.createStatement();
-//            s.executeUpdate("delete from Songs where songId = 2 ;");
+//        List<SongsList> list = new ArrayList<>();
+//        System.out.println("------------------------------------------------------------------------------------------------");
+//        System.out.printf ("%-5s\t%-25s\t%-15s\n", "LIST ID", "SONG ID", "PLAYLIST ID");
+//        try {
+//            Statement st = con.createStatement();
+//            ResultSet rs = st.executeQuery("Select * from SongsList");
+//            while (rs.next()) {
+//                SongsList s = new SongsList();
+//                s.setListId(rs.getInt(1));
+//                s.setSongId(rs.getInt(2));
+//                s.setPlayListId(rs.getInt(3));
 //
+//                list.add(s);
+//                System.out.printf ("%-5s\t%-25s\t%-15s\n", rs.getInt(1),rs.getInt(2),rs.getInt(3));
+//                System.out.println("----------------------------------------------------------------------------------------------");
+//
+//            }
+//        } catch (SQLException exception) {
+//            exception.printStackTrace();
 //        }
-//        catch (SQLException e)
-//        {
-//            System.out.println(e);
-//        }
+//        return list;
 //    }
-//
-//    public void updateStudentData()
-//    {
-//        Connection con = getConnection();
-//        try
-//        {
-//            Statement s= con.createStatement();
-//            s.executeUpdate("Update  Songs set songName ='Let Me Love' where songName = 'Chikeny Chameli' ;");
-//
-//        }
-//        catch (SQLException e)
-//        {
-//            System.out.println(e);
-//        }
-//    }
-
-    
-
 
 }

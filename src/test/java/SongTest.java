@@ -1,18 +1,18 @@
-import bean.Songs;
+import bean.Song;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import serching.SearchByColumn;
+
 
 import static org.junit.Assert.*;
 
-public class SongsTest
+public class SongTest
 {
-    Songs s=null;
+    Song s=null;
     @Before
     public void setUp()
     {
-        s = new Songs(1,"NATU-NATU","00:03:34","Justin_Beiber","RRR-South-Movie","Action Song","src/main/resources/Natu-Natu(PagalWorld).wav");
+        s = new Song(1,"NATU-NATU","00:03:34","Justin_Beiber","RRR-South-Movie","Action Song","src/main/resources/Natu-Natu(PagalWorld).wav");
     }
 
     @After
@@ -34,4 +34,5 @@ public class SongsTest
 
 
 }
+
 

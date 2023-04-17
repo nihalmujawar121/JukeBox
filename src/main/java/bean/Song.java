@@ -1,6 +1,8 @@
 package bean;
 
-public class Songs implements Comparable<Songs>
+import java.util.Objects;
+
+public class Song
 {
     private int songId;
     private String songName;
@@ -10,7 +12,7 @@ public class Songs implements Comparable<Songs>
     private String genre;
     private String url;
 
-    public Songs(int songId, String songName, String duration, String artistName, String albumName, String genre, String url) {
+    public Song(int songId, String songName, String duration, String artistName, String albumName, String genre, String url) {
         this.songId = songId;
         this.songName = songName;
 
@@ -20,7 +22,7 @@ public class Songs implements Comparable<Songs>
         this.genre = genre;
         this.url = url;
     }
-    public Songs()
+    public Song()
     {
 
     }
@@ -84,7 +86,7 @@ public class Songs implements Comparable<Songs>
 
     @Override
     public String toString() {
-        return "Songs{" +
+        return "Song{" +
                 "songId=" + songId +
                 ", songName='" + songName + '\'' +
                 ", duration='" + duration + '\'' +
@@ -96,7 +98,15 @@ public class Songs implements Comparable<Songs>
     }
 
     @Override
-    public int compareTo(Songs o) {
-        return this.songName.compareTo(o.getSongName());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return songId == song.songId && Objects.equals(songName, song.songName) && Objects.equals(duration, song.duration) && Objects.equals(artistName, song.artistName) && Objects.equals(albumName, song.albumName) && Objects.equals(genre, song.genre) && Objects.equals(url, song.url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(songId, songName, duration, artistName, albumName, genre, url);
     }
 }
