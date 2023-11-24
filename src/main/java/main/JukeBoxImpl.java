@@ -124,25 +124,25 @@ public class JukeBoxImpl
                                 }
                                     break;
 
-                        case 3:
-                        int songId;
-                        System.out.println("Enter Playlist ID's 1 to 6");
-                        System.out.println("Enter Playlist Id :");
-                        int playlistId = scanner2.nextInt();
-
-
-                        System.out.println("your playlist is successfully created");
-                        do {
-                            System.out.println("Enter SongList ID's 1 to 12");
-                            System.out.println("enter songId or press 0 to exit" );
-                            songId=scanner.nextInt();
-                            boolean insert=create.createPList(playlistId,songId);
-                            if(!insert)
-                            {
-                                System.out.println("Song Id Inserted");
-                            }
-                        } while(songId > 0);
-                        break;
+//                        case 3:
+//                        int songId;
+//                        System.out.println("Enter Playlist ID's 1 to 6");
+//                        System.out.println("Enter Playlist Id :");
+//                        int playlistId = scanner2.nextInt();
+//
+//
+//                        System.out.println("your playlist is successfully created");
+//                        do {
+//                            System.out.println("Enter SongList ID's 1 to 12");
+//                            System.out.println("enter songId or press 0 to exit" );
+//                            songId=scanner.nextInt();
+//                            boolean insert=create.createPList(playlistId,songId);
+//                            if(!insert)
+//                            {
+//                                System.out.println("Song Id Inserted");
+//                            }
+//                        } while(songId > 0);
+//                        break;
 
                     case 4:
                         System.out.println("----THANK FOR USING JUKEBOX----");
